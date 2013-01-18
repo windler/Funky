@@ -156,6 +156,44 @@ public class FunkyBridge {
 		return wrapper;
 	}
 
+	/**
+	 * invokes a FP function
+	 * 
+	 * @param <T>
+	 *            Type of the immutable value
+	 * @param function
+	 *            Function to invoke
+	 * @param clazz
+	 *            return-class of function
+	 * @param params
+	 *            Parameters of function
+	 * @return immutable result
+	 * @throws FunkyException
+	 */
+	protected final <T> FunkyImmutableValue<T> invoke(
+			final FunkyFunction function, final Class<T> clazz,
+			final Object... params) throws FunkyException {
+		return getFunkyWrapper().invoke(function, clazz, params);
+	}
+
+	/**
+	 * invokes a FP functions and notifies the listener when finished
+	 * 
+	 * @param listener
+	 *            Listener to notify
+	 * @param function
+	 *            function to invoke
+	 * @param params
+	 *            parameters for the function
+	 * @throws FunkyException
+	 */
+	protected final void invokeAndNotify(
+			final FunkyInvocationFinishedListener<?> listener,
+			final FunkyFunction function, final Object... params)
+			throws FunkyException {
+		getFunkyWrapper().invokeAndNotify(listener, function, params);
+	}
+
 	private void createWrapper() throws FunkyException {
 
 		if (getClass().isAnnotationPresent(Funky.class)) {

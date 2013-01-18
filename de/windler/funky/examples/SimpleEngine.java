@@ -14,14 +14,13 @@ public class SimpleEngine extends FunkyBridge {
 	}
 
 	public long calc() throws FunkyException {
-		return getFunkyWrapper().invoke(ExampleFunctions.MY_FUNCTION,
-				Long.class, 10, 10).getValue();
+		return invoke(ExampleFunctions.MY_FUNCTION, Long.class, 10, 10)
+				.getValue();
 	}
 
 	public void calcAsync(FunkyInvocationFinishedListener<?> listener)
 			throws FunkyException {
-		getFunkyWrapper().invokeAndNotify(listener, ExampleFunctions.ASYNC,
-				1000);
+		invokeAndNotify(listener, ExampleFunctions.ASYNC, 1000);
 	}
 
 }

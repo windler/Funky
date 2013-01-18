@@ -7,6 +7,8 @@ import de.windler.funky.core.FunkyInvocationFinishedListener;
 
 public class Main {
 	public static void main(String[] args) throws FunkyException {
+
+		// create a new KalkEngine - this will be initialized in thread
 		final KalkEngine engine = new KalkEngine();
 		engine.addInitializedListener(new FunkyInitializedListener() {
 
@@ -21,6 +23,8 @@ public class Main {
 
 			}
 		});
+
+		// create a FakEngine - will we initialized in thread. lazy
 		final FakEngine engineFak = new FakEngine();
 		engineFak.addInitializedListener(new FunkyInitializedListener() {
 
@@ -31,9 +35,11 @@ public class Main {
 			}
 		});
 
+		// create a SimpleEngine. Will be loaded on construction
 		final SimpleEngine simpleEngine = new SimpleEngine();
 		System.out.println(simpleEngine.calc());
 
+		// invoke a method and notify a listener when finished
 		simpleEngine.calcAsync(new FunkyInvocationFinishedListener<Long>() {
 
 			@Override

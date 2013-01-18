@@ -29,8 +29,8 @@ public class KalkEngine extends FunkyBridge {
 	}
 
 	public double kalkSmth(final int i, final int j) throws FunkyException {
-		long res = getFunkyWrapper().invoke(ExampleFunctions.MY_FUNCTION,
-				Long.class, i, j).getValue();
+		long res = invoke(ExampleFunctions.MY_FUNCTION, Long.class, i, j)
+				.getValue();
 		return res * pi2.getValue() * pi;
 	}
 }

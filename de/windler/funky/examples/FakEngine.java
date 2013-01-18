@@ -17,7 +17,6 @@ public class FakEngine extends FunkyBridge {
 	}
 
 	public Long calcFak(int i) throws FunkyException {
-		return getFunkyWrapper().invoke(ExampleFunctions.FACTORIAL, Long.class,
-				i).getValue();
+		return invoke(ExampleFunctions.FACTORIAL, Long.class, i).getValue();
 	}
 }
