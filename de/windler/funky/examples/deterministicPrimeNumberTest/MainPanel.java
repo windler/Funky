@@ -25,6 +25,7 @@ public class MainPanel extends JPanel {
 
 	private static final long serialVersionUID = 6673035421648006609L;
 
+	private static final String NOT_INITIALIZED = "Wrapper is not initialized yet.";
 	private static final String IS_NOT_PRIME = "This is not a prime number";
 	private static final String IS_PRIME = "This is a prime number.";
 	private static final String ERROR_TEXT = "Error. Check console output.";
@@ -50,16 +51,24 @@ public class MainPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				label.setText(TESTING);
 				try {
-					service.testPrimeNumber(Long.parseLong(input.getText()),
-							new FunkyInvocationFinishedListener<Boolean>() {
+					// because we will initialize the wrapper in a thread and
+					// there are tests in the clj which last long we have to
+					// check here if already initialized
+					if (service.isInitialized()) {
+						service.testPrimeNumber(
+								Long.parseLong(input.getText()),
+								new FunkyInvocationFinishedListener<Boolean>() {
 
-								@Override
-								public void onInvocationFinished(
-										FunkyImmutableValue<Boolean> value) {
-									label.setText(value.getValue() ? IS_PRIME
-											: IS_NOT_PRIME);
-								}
-							});
+									@Override
+									public void onInvocationFinished(
+											FunkyImmutableValue<Boolean> value) {
+										label.setText(value.getValue() ? IS_PRIME
+												: IS_NOT_PRIME);
+									}
+								});
+					} else {
+						label.setText(NOT_INITIALIZED);
+					}
 				} catch (Exception e) {
 					label.setText(ERROR_TEXT);
 					e.printStackTrace();

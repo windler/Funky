@@ -25,6 +25,7 @@
   (is (prime? 13))
   (is (prime? 19))
   (is (prime? 5))
+  (is (prime? 100000213)) "this is one :) calucaltion takes time."
   (is (= false (prime? 0)))
   (is (= false (prime? 1)))
   (is (= false (prime? 4)))

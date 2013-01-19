@@ -8,7 +8,11 @@ package de.windler.funky.core;
  * 
  */
 public interface IFunkyCoreWrapper extends IFunkyWrapper {
-	void initialize() throws FunkyException;
 
-	boolean isInitialized();
+	/**
+	 * initializes the wrapper
+	 * 
+	 * @throws FunkyException
+	 */
+	void initialize() throws FunkyException;
 }

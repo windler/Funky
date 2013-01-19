@@ -111,6 +111,16 @@ public class FunkyBridge {
 		initListeners.remove(listener);
 	}
 
+	/**
+	 * checks whether the wrapper is initialized
+	 * 
+	 * @return
+	 * @throws FunkyException
+	 */
+	public boolean isInitialized() throws FunkyException {
+		return getFunkyWrapper().isInitialized();
+	}
+
 	private FunkyImmutableValue<?> getInvokedValueFor(final Field f,
 			final Class<?> clazz) throws FunkyException {
 		return getFunkyWrapper().invoke(new FunkyFunction() {

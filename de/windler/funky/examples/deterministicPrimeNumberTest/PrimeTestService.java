@@ -1,6 +1,7 @@
 package de.windler.funky.examples.deterministicPrimeNumberTest;
 
 import de.windler.funky.annotations.Funky;
+import de.windler.funky.annotations.FunkyInitializeInThread;
 import de.windler.funky.core.FunkyBridge;
 import de.windler.funky.core.FunkyException;
 import de.windler.funky.core.FunkyInvocationFinishedListener;
@@ -13,6 +14,7 @@ import de.windler.funky.drivers.FunkyDriver;
  * @since 19.01.2013
  */
 @Funky(driver = FunkyDriver.CLOJURE, target = "de/windler/funky/examples/deterministicPrimeNumberTest/primeTest.clj")
+@FunkyInitializeInThread
 public class PrimeTestService extends FunkyBridge {
 
 	public PrimeTestService() throws FunkyException {
