@@ -1,4 +1,4 @@
-(ns de.windler
+(ns de.windler.primetest
   (:use clojure.test))
 
 
@@ -17,18 +17,18 @@
     ))
 
 (with-test
-	(defn prime [n] 
+	(defn prime? [n] 
 	  "Tests whether n is a prime number. This will happen bruteforce 
 	   beacause we need some time to elapse for this example ;)"
    (if (> n 1) (primeBruteforce n false) false))
  
-  (is (prime 13))
-  (is (prime 19))
-  (is (prime 5))
-  (is (= false (prime 0)))
-  (is (= false (prime 1)))
-  (is (= false (prime 4)))
-  (is (= false (prime 24)))
+  (is (prime? 13))
+  (is (prime? 19))
+  (is (prime? 5))
+  (is (= false (prime? 0)))
+  (is (= false (prime? 1)))
+  (is (= false (prime? 4)))
+  (is (= false (prime? 24)))
  )
 
 (run-all-tests)

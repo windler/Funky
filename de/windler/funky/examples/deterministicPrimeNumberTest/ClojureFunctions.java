@@ -9,7 +9,7 @@ import de.windler.funky.core.FunkyFunction;
  * @since 19.01.2013
  */
 public enum ClojureFunctions implements FunkyFunction {
-	PRIME_TEST("prime", "de.windler");
+	PRIME_TEST("prime?", "de.windler.primetest");
 
 	private final String name;
 	private final String namespace;
