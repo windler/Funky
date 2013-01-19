@@ -1,4 +1,4 @@
-package de.windler.funky.examples;
+package de.windler.funky.examples.misc;
 
 import de.windler.funky.core.FunkyException;
 import de.windler.funky.core.FunkyImmutableValue;

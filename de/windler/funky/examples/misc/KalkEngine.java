@@ -1,4 +1,4 @@
-package de.windler.funky.examples;
+package de.windler.funky.examples.misc;
 
 import de.windler.funky.annotations.Funky;
 import de.windler.funky.annotations.FunkyConstant;
