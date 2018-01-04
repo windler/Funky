@@ -102,4 +102,4 @@ private FunkyImmutableValue<Double> pi;
 ```
 
 ## Future work
-This projects was a prrof of concept is is no longer under development. If you like the prject, feel free to contact me, create issues or fork the project. There are also some trivial examples located within the sources.
+This projects was a proof of concept and is no longer under active development. If you like the project feel free to contact me, create issues or fork the project. There are also some trivial examples located within the sources.
