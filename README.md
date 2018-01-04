@@ -60,3 +60,47 @@ Thats it. You can now run your clojure functions by calling your java method
 ```java
 (new SimpleEngine()).multiply(10,5);
 ```
+
+### Async execution
+You can also run `async` function like the following
+```clojure
+(defn async [i] 
+  (if (= i 0) 1
+    (+ 1 (async (- i 1)))))
+```
+
+Instead of waiting for the result you can now use the `invokeAndNotify` instead of the `invoke` method within your java service
+```java
+public void calcAsync(FunkyInvocationFinishedListener<?> listener) throws FunkyException {
+	invokeAndNotify(listener, ClojureFunctions.CLOJ_ADD_ASYNC, 1000);
+}
+```
+
+When the executions finishes the `FunkyInvocationFinishedListener` will be called.
+
+### Load clojure source on demand
+When the `FunkyBridge` is created the source file will be parsed. If you want to parse it when `invoke` is called then just annotate `@FunkyLoadOnDemand`.
+
+## Initialize bridge in thread
+If you want to init the `FunkyBridge` immidiatly but in background you can annotate `@FunkyInitializeInThread`. By calling `FunkyBridge#addInitializedListener` you can register a callback that is called when the thread finished.
+
+### Constants from clojure
+If you want a field in your `FunkyBridge` to be a constant from the clojure source then just create a field with the name of the `def` to call and annotate it with `@FunkyConstant`. Remmeber that this `def` must not need any arguments. Alternatively, you can annotate `@FunkyImmutableConstant` and make the field of type `FunkyImmutableValue`.
+
+```clojure
+(defn pi [] (/ 3.14 1))
+```
+
+```java 
+//...extends FunkyBridge
+//(...)
+
+@FunkyConstant
+private Double pi;
+
+@FunkyImmutableConstant
+private FunkyImmutableValue<Double> pi;
+```
+
+## Future work
+This projects was a prrof of concept is is no longer under development. If you like the prject, feel free to contact me, create issues or fork the project. There are also some trivial examples located within the sources.
