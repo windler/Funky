@@ -50,15 +50,14 @@ public class SimpleEngine extends FunkyBridge {
 	}
 
 	public long multiply(int x, in y) throws FunkyException {
-		return invoke(ClojureFunctions.CLOJ_MULTI, Long.class, x, y)
-				.getValue();
+		return invoke(ClojureFunctions.CLOJ_MULTI, Long.class, x, y).getValue();
 	}
 }
 ```
 
 Thats it. You can now run your clojure functions by calling your java method
 ```java
-(new SimpleEngine()).multiply(10,5);
+(new SimpleEngine()).multiply(10, 5);
 ```
 
 ### Async execution
